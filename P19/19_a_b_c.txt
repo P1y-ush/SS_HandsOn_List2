@@ -1,0 +1,53 @@
+// 19a. Create a FIFO file by mknod command
+	
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P19$ mknod myfifo1 p
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P19$ ls -l
+total 0
+prw-rw-r-- 1 piyush piyush 0 Sep 30 16:11 myfifo1
+
+
+// 19b. Create a FIFO file by mkfifo command
+	
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P19$ mkfifo myfifo2
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P19$ ls -l
+total 0
+prw-rw-r-- 1 piyush piyush 0 Sep 30 16:11 myfifo1
+prw-rw-r-- 1 piyush piyush 0 Sep 30 16:12 myfifo2
+
+
+// 19c. use strace command to find out, which command (mknod or mkfifo) is better.
+----------------------------
+Check mkfifo with strace
+----------------------------
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P19$ strace mkfifo myfifo3
+execve("/usr/bin/mkfifo", ["mkfifo", "myfifo3"], 0x7ffd67849fa8 /* 49 vars */) = 0
+mknodat(AT_FDCWD, "myfifo3", S_IFIFO|0666) = 0
+
+# Although, typed mkfifo, inside it calls the mknod() system call with the flag S_IFIFO.
+
+-------------------------------
+Check mkfifo with strace
+-------------------------------
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P19$ strace mknod myfifo4 p
+execve("/usr/bin/mknod", ["mknod", "myfifo4", "p"], 0x7ffd289aa060 /* 49 vars */) = 0
+mknodat(AT_FDCWD, "myfifo4", S_IFIFO|0666) = 0
+
+# Again, the same system call mknod() with S_IFIFO is executed.
+
+--------------
+Conclusion
+--------------
+
+Both mkfifo and mknod p end up calling the same system call (mknod with S_IFIFO).
+
+That means functionality is identical.
+
+But:
+
+mkfifo is more readable (it explicitly says FIFO).
+
+mknod is older, more general (it can also make block devices, char devices, etc.).
+
+
+
+

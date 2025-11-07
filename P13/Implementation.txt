@@ -1,0 +1,25 @@
+Output:
+# Compile both programs
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P13$ cc 13a.c -o 13a
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P13$ cc 13b.c -o 13b
+
+# Run first program
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P13$ ./13a
+sigaction: Invalid argument
+Process PID = 19322. Waiting for SIGSTOP...
+
+
+# Open another terminal window and run other program as follows: 
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P13$ ./13b 19322     // ./13b <PID of 13a>
+Sent SIGSTOP to process 19322
+
+# Terminal 1
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P13$ ./13a
+sigaction: Invalid argument
+Process PID = 19322. Waiting for SIGSTOP...
+
+[1]+  Stopped                 ./13a
+
+
+
+

@@ -1,0 +1,15 @@
+# Compile both programs
+
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P21$ cc proc_A.c -o proc_A 
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P21$ cc proc_B.c -o proc_B
+
+
+# Run program1 in terminal1
+
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P21$ ./proc_A
+Process A received: Hello from Process B
+
+# Run program1 in terminal2
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P21$ ./proc_B
+Process B received: Hello from Process A
+

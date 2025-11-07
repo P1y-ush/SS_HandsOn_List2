@@ -1,0 +1,17 @@
+// Create FIFO file
+
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P20$ mkfifo myfifo
+
+
+// Compile both programs 
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P20$ cc writer.c -o write
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P20$ cc reader.c -o read
+
+// Run read function then write function in another terminal window
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P20$ ./read
+Received message: Hello from writer program!
+
+piyush@piyush-Lenovo-ideapad-330S-15IKB-D:~/Desktop/SS/List2/P20$ ./write
+mkfifo: File exists
+Message sent through FIFO.
+
